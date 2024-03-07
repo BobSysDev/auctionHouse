@@ -1,21 +1,17 @@
 public class Clerk {
-
-private Item item;
 private Auction auction;
 
     Clerk(){
         auction=null;
-        item=null;
     }
-    public void createAuction(Item item){
-        this.item=item;
-        this.auction= new Auction(this, );
+    public void setAuction(Auction auction){
+        this.auction= auction;
     }
-    public  startAuction(){
-
+    public void startAuction(){
+        auction.getTimer().start; //to change
     }
     public String stopAuction(){
         return getBidder();
     }
-    public void addItem(String item){}
+    //public void addItem(String item){}
 }
