@@ -7,6 +7,7 @@ public class Auction
   private Item item;
   private Bidder highestBidder;
   private ArrayList<Bidder> bidders;
+  Thread timerThread;
   private float price;
   private boolean running;
 
@@ -17,6 +18,7 @@ public class Auction
     this.highestBidder = null;
     this.bidders = new ArrayList<Bidder>();
     this.price = startingPrice;
+    this.timerThread = null;
   }
 
   public float getPrice(){
@@ -52,7 +54,20 @@ public class Auction
     return running;
   }
 
-  public void startAuction(){
+  public void startTimer(){
+    Thread timerThread = new Thread(timer);
+    timerThread.start();
+  }
 
+  public String getTimer(){
+    return timer.toString();
+  }
+
+  public int getTimerRaw(){
+    return timer.getCurrentTime();
+  }
+
+  public void stopTimer(){
+    timerThread.interrupt();
   }
 }
