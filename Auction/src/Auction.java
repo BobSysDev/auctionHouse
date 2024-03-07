@@ -1,9 +1,12 @@
+import java.util.ArrayList;
+
 public class Auction
 {
   private Clerk clerk;
   private Timer timer;
   private Item item;
   private Bidder highestBidder;
+  private ArrayList<Bidder> bidders;
   private float price;
   private boolean running;
 
@@ -12,19 +15,25 @@ public class Auction
     this.timer = timer;
     this.item = item;
     this.highestBidder = null;
+    this.bidders = new ArrayList<Bidder>();
     this.price = startingPrice;
   }
 
   public float getPrice(){
-    return price;
+    return item.getBid();
   }
 
-  public void placeABid(Bidder bidder, float priceIncrease){
+  public void joinAuction(Bidder bidder){
+    bidders.add(bidder);
+  }
+
+  public void leaveAuction(Bidder bidder){
+    bidders.remove(bidder);
+  }
+
+  public void placeABid(Bidder bidder, float bid){
     highestBidder = bidder;
-    if(priceIncrease <= 0){
-      throw new UnsupportedOperationException("The price increase provided was invalid");
-    }
-    price += priceIncrease;
+    item.bid(bid, bidder);
   }
 
   public Item getItem(){
@@ -41,5 +50,9 @@ public class Auction
 
   public boolean getAuctionStatus(){
     return running;
+  }
+
+  public void startAuction(){
+
   }
 }
