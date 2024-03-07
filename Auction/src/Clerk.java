@@ -1,3 +1,4 @@
+
 public class Clerk {
 private Auction auction;
 
@@ -14,4 +15,3 @@ private Auction auction;
         return getBidder();
     }
     //public void addItem(String item){}
-}
