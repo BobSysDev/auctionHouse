@@ -1,10 +1,10 @@
 public class Item
 {
   private String name;
-  private int startPrice;
-  private int buyOutPrice;
-  private int bid;
-  private String bidder;
+  private float startPrice;
+  private float buyOutPrice;
+  private float bid;
+  private Bidder bidder;
 
   public Item(String name, int startPrice, int buyOutPrice){
     this.name = name;
@@ -19,27 +19,27 @@ public class Item
     return name;
   }
 
-  public int getStartPrice()
+  public float getStartPrice()
   {
     return startPrice;
   }
 
-  public int getBuyOutPrice()
+  public float getBuyOutPrice()
   {
     return buyOutPrice;
   }
 
-  public int getBid()
+  public float getBid()
   {
     return bid;
   }
 
-  public String getBidder()
+  public Bidder getBidder()
   {
     return bidder;
   }
 
-  public void bid(int bid, String bidder){
+  public void bid(float bid, Bidder bidder){
     if (bid>startPrice&&bid>this.bid){
       this.bid = bid;
       this.bidder = bidder;
